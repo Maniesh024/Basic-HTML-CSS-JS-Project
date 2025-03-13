@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container">
+        <h2>Age Calculator</h2>
+        <div class="user-input">
+            <label id="para">Enter Your Date of Birth:</label>
+            <div class="input-box">
+                <input type="number" id="day" placeholder="DD" min="1" max="31">
+                <input type="number" id="month" placeholder="MM" min="1" max="12">
+                <input type="number" id="year" placeholder="YYYY" min="1900" max="2100">
+            </div>
+        </div>
+        <button onclick="calculateAge()">Calculate Age</button>
+        <div class="result-container">
+            <div class="result-box" id="years-box">0 Y</div>
+            <div class="result-box" id="months-box">0 M</div>
+            <div class="result-box" id="days-box">0 D</div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Made with ❤ By Maniesh</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

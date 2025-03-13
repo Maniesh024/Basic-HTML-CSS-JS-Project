@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Journey Tracker/title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Life Journey Tracker</h2>
+        <div class="user-input">
+            <label id="para">Enter Your Date of Birth:</label>
+            <div class="input-box">
+                <input type="number" id="day" placeholder="DD" min="1" max="31">
+                <input type="number" id="month" placeholder="MM" min="1" max="12">
+                <input type="number" id="year" placeholder="YYYY" min="1900" max="2100">
+            </div>
+        </div>
+        <button onclick="calculateAge()">Calculate Age</button>
+
+        <div class="result-container">
+            <div class="result-box" id="years-box">0 Years</div>
+            <div class="result-box" id="months-box">0 Months</div>
+            <div class="result-box" id="days-box">0 Days</div>
+        </div>
+        <div class="result-container">
+            <div class="result-box" id="total-months-box">0 Months + 0 Days</div>
+            <div class="result-box" id="total-days-box">0 Total Days</div>
+            <div class="result-box" id="weeks-box">0 Weeks</div>
+            </div>
+        <div class="result-container">
+            <div class="result-box" id="hours-box">0 Hours</div>
+            <div class="result-box" id="minutes-box">0 Minutes</div>
+            <div class="result-box" id="seconds-box">0 Seconds</div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Made with ❤ By Maniesh</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
