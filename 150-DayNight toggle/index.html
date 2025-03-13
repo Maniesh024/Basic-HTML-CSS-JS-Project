@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day Night Toggle</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      body {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.5s ease-in-out;
+      }
+      .day {
+        background: linear-gradient(to bottom, #87ceeb, #f0f8ff);
+      }
+      .night {
+        background: linear-gradient(to bottom, #0b0c2a, #1a1b41);
+        position: relative;
+      }
+      .stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      .star {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 0 5px white;
+        animation: twinkle 2s infinite alternate;
+      }
+      @keyframes twinkle {
+        from {
+          opacity: 0.5;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .sun {
+        position: absolute;
+        top: 10%;
+        right: 10%;
+        width: 80px;
+        height: 80px;
+        background: yellow;
+        border-radius: 50%;
+        box-shadow: 0 0 50px yellow;
+      }
+      .center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      label {
+        display: block;
+        width: 100px;
+        height: 50px;
+        background: rgb(202, 202, 202);
+        border-radius: 30mm;
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        z-index: 1;
+        box-shadow: 0 0 15px 5px rgba(83, 180, 229, 0.5);
+      }
+      label .thumb {
+        position: absolute;
+        width: 44px;
+        height: 44px;
+        background: rgb(23, 24, 33);
+        top: 3px;
+        left: 3px;
+        border-radius: 50%;
+        box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2),
+          3px 3px 0 rgba(100, 100, 100, 0.2);
+        overflow: hidden;
+        transition: 0.5s ease-in;
+      }
+      .rotator {
+        display: flex;
+        width: 200%;
+        height: 100%;
+        align-items: center;
+        transition: 0.5s ease-in;
+      }
+      .side {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.5s ease-in;
+      }
+      .side i {
+        font-size: 24px;
+        color: white;
+      }
+      #toggle:checked + label .thumb .rotator {
+        transform: translateX(-50%);
+        background: rgb(235, 123, 91);
+      }
+      #toggle:checked + label .thumb {
+        left: calc(100% - 47px);
+      }
+      #toggle:checked + label .thumb .rotator .side i {
+        transform: rotate(180deg);
+      }
+      #toggle {
+        display: none;
+      }
+      #toggle:checked ~ .stars {
+        display: none;
+      }
+      #toggle:checked ~ .sun {
+        display: block;
+      }
+      .sun {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="day">
+    <div class="stars">
+      <!-- Generate stars using JS -->
+    </div>
+    <div class="sun"></div>
+
+    <div class="center">
+      <input type="checkbox" name="toggle" id="toggle" />
+      <label for="toggle">
+        <div class="thumb">
+          <div class="rotator">
+            <div class="left side">
+              <i class="fas fa-moon"></i>
+            </div>
+            <div class="right side">
+              <i class="fas fa-sun"></i>
+            </div>
+          </div>
+        </div>
+      </label>
+    </div>
+
+    <script>
+      const toggle = document.getElementById("toggle");
+      const body = document.body;
+      const starsContainer = document.querySelector(".stars");
+
+      // Generate stars dynamically
+      function createStars() {
+        for (let i = 0; i < 100; i++) {
+          let star = document.createElement("div");
+          star.className = "star";
+          star.style.top = Math.random() * 100 + "%";
+          star.style.left = Math.random() * 100 + "%";
+          starsContainer.appendChild(star);
+        }
+      }
+      createStars();
+
+      // Toggle theme
+      toggle.addEventListener("change", () => {
+        if (toggle.checked) {
+          body.classList.remove("day");
+          body.classList.add("night");
+        } else {
+          body.classList.remove("night");
+          body.classList.add("day");
+        }
+      });
+    </script>
+  </body>
+</html>

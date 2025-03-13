@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fake 3D</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #1d1e22;
+        overflow: hidden;
+      }
+      .layer {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: transform 1s ease-in-out;
+      }
+      #layer1 {
+        background: rgb(255, 239, 219);
+        z-index: 2;
+      }
+      #layer2 {
+        background: rgb(229, 254, 193);
+        transform: translateX(100%);
+        z-index: 1;
+      }
+      .can-container {
+        width: 200px;
+        position: relative;
+        margin-top: 50px;
+      }
+      .can-img {
+        width: 100%;
+      }
+      .wrapper {
+        position: absolute;
+        height: 90%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .text {
+        font-family: Poppins, sans-serif;
+        font-size: 50px;
+        font-weight: 600;
+      }
+      .fruits img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      label {
+        font-family: Poppins, sans-serif;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: 1px solid black;
+        border-radius: 20px;
+        cursor: pointer;
+        margin-top: 50px;
+        background: white;
+      }
+      #toggle {
+        display: none;
+      }
+      #toggle:checked ~ #layer1 {
+        transform: translateX(-100%);
+      }
+      #toggle:checked ~ #layer2 {
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <body>
+    <input type="checkbox" id="toggle" />
+    <div class="layer" id="layer1">
+      <div class="text">Orange</div>
+      <div class="can-container">
+        <img src="../images/can.png" alt="" class="can-img" />
+        <img src="../images/Contents.png" alt="" class="wrapper" />
+      </div>
+      <label for="toggle">Click to Slide</label>
+    </div>
+    <div class="layer" id="layer2">
+      <div class="text">Pineapple</div>
+      <div class="can-container">
+        <img src="../images/can.png" alt="" class="can-img" />
+        <img src="../images/Contents-2.png" alt="" class="wrapper" />
+      </div>
+      <label for="toggle">Click to Slide</label>
+    </div>
+  </body>
+</html>
